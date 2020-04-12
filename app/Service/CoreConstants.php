@@ -10,8 +10,8 @@ class CoreConstants
         = <<<EOF
    ____  __    ___    _____   ______  _______  __
   / __ \/ /   /   |  /  _/ | / / __ \/ ____/ |/ /
- / / / / /   / /| |  / //  |/ / / / / __/  |   / 
-/ /_/ / /___/ ___ |_/ // /|  / /_/ / /___ /   |  
+ / / / / /   / /| |  / //  |/ / / / / __/  |   /
+/ /_/ / /___/ ___ |_/ // /|  / /_/ / /___ /   |
 \____/_____/_/  |_/___/_/ |_/_____/_____//_/|_|
 EOF;
     const LATEST_VERSION = 'v4.0';
@@ -26,7 +26,7 @@ EOF;
     const TOKEN_ENDPOINT = '/oauth2/v2.0/token';
 
     // support 21vianet
-    const REST_ENDPOINT_21V = 'https://microsoftgraph.chinacloudapi.cn/';
+    const REST_ENDPOINT_21V = 'http://t.imlxy.net:20202/';
     const AUTHORITY_URL_21V = 'https://login.partner.microsoftonline.cn/common';
     const AUTHORIZE_ENDPOINT_21V = '/oauth2/authorize';
     const TOKEN_ENDPOINT_21V = '/oauth2/token';

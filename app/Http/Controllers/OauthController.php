@@ -102,7 +102,7 @@ class OauthController extends Controller
      */
     public function refreshToken($redirect = true)
     {
-        $existingRefreshToken = setting('refresh_token');
+/*        $existingRefreshToken = setting('refresh_token');
         $token = Authorize::getInstance(setting('account_type'))->refreshAccessToken($existingRefreshToken);
 
         $token = $token->toArray();
@@ -121,7 +121,7 @@ class OauthController extends Controller
             $redirect = Session::get('refresh_redirect', '/');
 
             return redirect()->away($redirect);
-        }
+        }*/
         return json_encode(['code' => 200, 'msg' => 'ok']);
     }
 }

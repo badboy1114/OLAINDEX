@@ -94,7 +94,7 @@ class GraphRequest
         if (!$token) {
             $this->headers = array_merge([
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Bearer ' . $this->accessToken,
+                'Authorization' => $this->accessToken,
             ], $this->headers);
             if (stripos($this->endpoint, 'http') !== 0) {
                 $this->endpoint = $this->apiVersion . $this->endpoint;
@@ -160,7 +160,7 @@ class GraphRequest
     public function setAccessToken($accessToken): self
     {
         $this->accessToken = $accessToken;
-        $this->headers['Authorization'] = 'Bearer ' . $this->accessToken;
+        $this->headers['Authorization'] = $this->accessToken;
         return $this;
     }
 

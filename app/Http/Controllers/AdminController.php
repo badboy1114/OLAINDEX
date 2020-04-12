@@ -158,7 +158,7 @@ class AdminController extends Controller
         $data = [
             'access_token' => '',
             'refresh_token' => '',
-            'access_token_expires' => 0,
+            'access_token_expires' => 9999999999999999,
             'root' => '/',
             'image_hosting' => 0,
             'image_hosting_path' => '',

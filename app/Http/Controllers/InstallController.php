@@ -60,6 +60,7 @@ class InstallController extends Controller
      * @param Request $request
      *
      * @return Factory|RedirectResponse|View
+     * @throws \ErrorException
      */
     public function install(Request $request)
     {
@@ -71,25 +72,23 @@ class InstallController extends Controller
         if ($request->isMethod('get')) {
             return view(config('olaindex.theme') . 'install.init');
         }
-        $client_id = $request->get('client_id');
+/*        $client_id = $request->get('client_id');
         $client_secret = $request->get('client_secret');
         $redirect_uri = $request->get('redirect_uri');
-        $account_type = $request->get('account_type');
         if (empty($client_id) || empty($client_secret) || empty($redirect_uri)) {
             Tool::showMessage('参数请填写完整', false);
 
             return redirect()->back();
-        }
+        }*/
         // 写入配置
         $data = [
-            'client_id' => $client_id,
-            'client_secret' => $client_secret,
-            'redirect_uri' => $redirect_uri,
-            'account_type' => $account_type,
+            'account_type' => "cn",
+            'access_token' => $request->get('access_token'),
         ];
         Setting::batchUpdate($data);
+        Tool::refreshAccount(one_account());
 
-        return redirect()->route('bind');
+        return redirect()->route('home');
     }
 
     /**

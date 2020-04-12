@@ -102,7 +102,7 @@ class Tool
      */
     public static function hasConfig(): bool
     {
-        return setting('client_id') && setting('client_secret') && setting('redirect_uri');
+        return setting('access_token');
     }
 
     /**
@@ -112,7 +112,7 @@ class Tool
      */
     public static function hasBind(): bool
     {
-        return setting('access_token') && setting('refresh_token') && setting('access_token_expires');
+        return setting('access_token'); // && setting('refresh_token') && setting('access_token_expires');
     }
 
     /**
