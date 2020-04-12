@@ -50,7 +50,7 @@ class Download extends Command
             $response = OneDrive::getInstance(one_account())->getItemByPath($remote);
         }
         if ($response['errno'] === 0) {
-            $download = $response['data']['@microsoft.graph.downloadUrl'] ??
+            $download = $response['data']['@content.downloadUrl'] ??
                 exit('404 NOT FOUND');
             $this->info("Download Link:\n{$download}");
         } else {

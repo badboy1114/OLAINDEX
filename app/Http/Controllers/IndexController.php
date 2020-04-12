@@ -119,8 +119,8 @@ class IndexController extends Controller
                 return view(config('olaindex.theme') . 'message');
             }
         }
-        if (Arr::has($item, '@microsoft.graph.downloadUrl')) {
-            return redirect()->away($item['@microsoft.graph.downloadUrl']);
+        if (Arr::has($item, '@content.downloadUrl')) {
+            return redirect()->away($item['@content.downloadUrl']);
         }
         // 获取列表资源
         $key = 'one:list:' . $graphPath;
@@ -145,10 +145,10 @@ class IndexController extends Controller
 
         // 处理 head/readme
         $head = array_key_exists('HEAD.md', $originItems)
-            ? Tool::getFileContent($originItems['HEAD.md']['@microsoft.graph.downloadUrl'], $graphPath . ':head')
+            ? Tool::getFileContent($originItems['HEAD.md']['@content.downloadUrl'], $graphPath . ':head')
             : '';
         $readme = array_key_exists('README.md', $originItems)
-            ? Tool::getFileContent($originItems['README.md']['@microsoft.graph.downloadUrl'], $graphPath . ':readme')
+            ? Tool::getFileContent($originItems['README.md']['@content.downloadUrl'], $graphPath . ':readme')
             : '';
         // 过滤微软OneNote文件
         $originItems = Arr::where($originItems, static function ($value) {
@@ -285,7 +285,7 @@ class IndexController extends Controller
 
             return view(config('olaindex.theme') . 'message');
         }
-        $file['download'] = $file['@microsoft.graph.downloadUrl'];
+        $file['download'] = $file['@content.downloadUrl'];
         foreach ($this->show as $key => $suffix) {
             if (in_array($file['ext'] ?? '', $suffix, false)) {
                 $view = 'show.' . $key;
@@ -296,7 +296,7 @@ class IndexController extends Controller
 
                         return redirect()->back();
                     }
-                    $file['content'] = Tool::getFileContent($file['@microsoft.graph.downloadUrl'], false);
+                    $file['content'] = Tool::getFileContent($file['@content.downloadUrl'], false);
                     if ($key === 'stream') {
                         $fileType
                             = empty(Extension::FILE_STREAM[$file['ext'] ?? 'file'])
@@ -314,7 +314,7 @@ class IndexController extends Controller
 
                 // dash视频流
                 if ($key === 'dash') {
-                    if (!strpos($file['@microsoft.graph.downloadUrl'], 'sharepoint.com')) {
+                    if (!strpos($file['@content.downloadUrl'], 'sharepoint.com')) {
                         return redirect()->away($file['download']);
                     }
                     $replace = str_replace('thumbnail', 'videomanifest', $file['thumb']);
@@ -324,7 +324,7 @@ class IndexController extends Controller
                 // 处理微软文档
                 if ($key === 'doc') {
                     $url = 'https://view.officeapps.live.com/op/view.aspx?src='
-                        . urlencode($file['@microsoft.graph.downloadUrl']);
+                        . urlencode($file['@content.downloadUrl']);
 
                     return redirect()->away($url);
                 }
@@ -359,7 +359,7 @@ class IndexController extends Controller
 
             return view(config('olaindex.theme') . 'message');
         }
-        $url = $file['@microsoft.graph.downloadUrl'];
+        $url = $file['@content.downloadUrl'];
 
         return redirect()->away($url);
     }
