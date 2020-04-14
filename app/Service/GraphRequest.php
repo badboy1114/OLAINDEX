@@ -140,11 +140,20 @@ class GraphRequest
                     'headers' => $curl->responseHeaders
                 ]
             );
-            $this->responseError = collect([
-                'errno' => $curl->errorCode,
-                'msg' => $curl->errorMessage,
-                'headers' => $curl->responseHeaders
-            ])->toJson();
+            if ($curl->errorMessage == "HTTP response code said error: The requested URL returned error: 429 Too Many Requests")
+            {
+                $this->responseError = collect([
+                    'errno' => $curl->errorCode,
+                    'msg' => "错误429: 请求次数过多，请在一分钟后重试...",
+                    'headers' => $curl->responseHeaders
+                ])->toJson();
+            } else {
+                $this->responseError = collect([
+                    'errno' => $curl->errorCode,
+                    'msg' => $curl->errorMessage,
+                    'headers' => $curl->responseHeaders
+                ])->toJson();
+            }
             $this->error = true;
         }
         $this->responseHeaders = collect($curl->responseHeaders)->toJson();
