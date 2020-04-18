@@ -2,6 +2,13 @@
 
 ✨ Another OneDrive Directory Index.
 
+## 仅适用于DreamSpark
+🎈修改自 [https://github.com/WangNingkai/OLAINDEX](https://github.com/WangNingkai/OLAINDEX)
+
+## 修改版安装方式
+🧭将下面教程中所有的 `https://github.com/WangNingkai/OLAINDEX` 替换为 `https://gitee.com/LXY1226/OLAINDEX` 也许可以运行
+也可参考 [Debian裸装手册](debian.md) 中的方案进行修改
+
 [![Latest Stable Version](https://poser.pugx.org/wangningkai/olaindex/v/stable)](https://packagist.org/packages/wangningkai/olaindex)
 [![GitHub stars](https://img.shields.io/github/stars/WangNingkai/OLAINDEX.svg?style=flat-square)](https://github.com/WangNingkai/OLAINDEX/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/WangNingkai/OLAINDEX.svg?style=flat-square)](https://github.com/WangNingkai/OLAINDEX/network)
