@@ -8,5 +8,5 @@ rm -rf OLAINDEX .git
 cp database/database.sample.sqlite database/database.sqlite
 composer install -vvv
 chown -R www-data:www-data .
-chmod -R 0755 storage
+chmod -R 0777 storage
 php artisan od:install
